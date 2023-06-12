@@ -1,13 +1,15 @@
+import { ChangeEvent } from "react"
+
 interface InputProps {
   type: string
   id?: string
   label?: string
   placeholder: string
   classname? : string
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-
-export function Input({ id, type, label, placeholder, classname }: InputProps) {
+export function Input({ id, type, label, placeholder, classname, onChange }: InputProps) {
 
   return (
     <div className={`flex flex-col gap-2 autofill:bg-yellow-200 font-Roboto ${classname}`}>
@@ -18,6 +20,7 @@ export function Input({ id, type, label, placeholder, classname }: InputProps) {
       type={type} 
       placeholder={placeholder}
       autoComplete="off"
+      onChange={onChange}
       />
     </div>
 

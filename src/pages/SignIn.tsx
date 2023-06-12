@@ -2,8 +2,19 @@ import { Logo } from "../components/Logo"
 import { Input } from "../components/Input"
 import { Button } from "../components/Button"
 import { Link } from "react-router-dom"
+import { useAuth } from "../hooks/auth"
+import { useState, MouseEvent } from "react"
 
 export function SignIn() {
+  const [email, setEmail] = useState<string>()
+  const [password, setPassword] = useState<string>()
+
+  const { signIn }: any = useAuth()
+
+  async function handleSignIn(event: MouseEvent<HTMLButtonElement>) {
+    event.preventDefault()
+    await signIn({email,password})
+  }
 
   return (
     <div className="min-w-screen min-h-screen overflow-auto px-1 bg-dark-400 flex flex-col justify-center items-center font-Poppins">
@@ -16,9 +27,23 @@ export function SignIn() {
 
             <h2 className="hidden lg:block text-center mb-8 text-lg text-white-100 font-medium">Faça login</h2>
 
-            <Input type="email" id="email" label="Email" placeholder="Exemplo: exemplo@exemplo.com.br" />
-            <Input type="password" id="password" label="Senha" placeholder="No mínimo 6 caracteres" classname="mt-8 mb-8" />
-            <Button title="Entrar" />
+            <Input
+              type="email"
+              id="email" label="Email"
+              placeholder="Exemplo: exemplo@exemplo.com.br"
+              onChange={event => setEmail(event.target.value)}
+            />
+
+            <Input
+              type="password"
+              id="password" label="Senha"
+              placeholder="No mínimo 6 caracteres"
+              classname="mt-8 mb-8"
+              onChange={event => setPassword(event.target.value)}
+            />
+
+            <Button title="Entrar" onClick={handleSignIn} />
+
           </form>
 
           <Link to="/signup" className="text-white-100 block mt-8 text-center font-medium text-xxs ">Criar uma conta</Link>

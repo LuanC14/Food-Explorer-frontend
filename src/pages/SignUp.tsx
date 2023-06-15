@@ -57,7 +57,7 @@ export function SignUp() {
               id="email"
               label="Email"
               placeholder="Exemplo: exemplo@exemplo.com.br"
-              classname="mt-6 mb-6"
+              margin="mt-6 mb-6"
               onChange={event => setEmail(event.target.value)}
             />
 
@@ -66,7 +66,7 @@ export function SignUp() {
               id="password"
               label="Senha"
               placeholder="No mínimo 6 caracteres"
-              classname="mb-6"
+              margin="mb-6"
               onChange={event => setPassword(event.target.value)}
             />
 

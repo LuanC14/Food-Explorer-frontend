@@ -38,7 +38,7 @@ export function SignIn() {
               type="password"
               id="password" label="Senha"
               placeholder="No mínimo 6 caracteres"
-              classname="mt-8 mb-8"
+              margin="mt-8 mb-8"
               onChange={event => setPassword(event.target.value)}
             />
 

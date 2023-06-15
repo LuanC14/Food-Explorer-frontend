@@ -1,11 +1,29 @@
 import logo from '../assets/Logo.svg'
 
-export function Logo() {
+interface LogoProps {
+  font?: string
+  width?: string
+  height?: string
+  isAdmin?: boolean
+}
 
-  return(
+export function Logo({ font, width, height, isAdmin }: LogoProps) {
+
+  if (!font && !width && !height) {
+    font = 'text-xxl'
+    width = 'w-11'
+    height = 'h-11'
+  }
+
+  return (
     <div className='flex gap-2 items-center font-Roboto font-bold text-lg'>
-      <img className='w-[44px] h-[44px]' src={logo} alt="" />
-      <p className='text-white-100'>Food Explorer</p>
+      <img className={`${width} ${height}`} src={logo} alt="" />
+
+      <div className={`flex gap-2 lg:flex-col lg:gap-0 lg:text-end`}>
+        <p className={`text-white-100 ${font}`} >Food Explorer</p>
+        <p className={`${!isAdmin ? 'hidden' : ''} text-xxxs text-cake-100 font-normal lg:mt-[-6px]`}>admin</p>
+      </div>
+
     </div>
   )
 }

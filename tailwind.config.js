@@ -19,6 +19,8 @@ export default {
 
     colors: {
 
+      transparent: 'transparent',
+
       white: {
         100: '#E1E1E6',
         200: '#E1E1E6',
@@ -64,7 +66,14 @@ export default {
       cake: {
         100: '#82F3FF ',
         200: '#065E7C',
+      },
+
+      gradient: {
+        100: '#091E26',
+        200: '#00131C'
       }
+
+     
     },
 
     fontFamily: {

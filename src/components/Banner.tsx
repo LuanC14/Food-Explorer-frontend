@@ -4,7 +4,7 @@ import bannerMobile from '../assets/bannerMobile.png'
 export function Banner() {
 
   return (
-    <div className="min-w-[325px] lg:min-w-[854px] relative bg-gradient-to-r from-gradient-200 to-gradient-100 w-full h-[120px] md:h-[260px] flex items-center font-Poppins" >
+    <div className="w-full flex items-center font-Poppins relative bg-gradient-to-r from-gradient-200 to-gradient-100 h-[120px] md:h-[260px]" >
 
       <div>
         <img
@@ -13,12 +13,12 @@ export function Banner() {
         />
 
         <img
-          className='md:hidden w-[170px] h-[150px] absolute mt-[-90px] ml-[-30px] '
+          className='md:hidden absolute w-[170px] h-[150px] mt-[-90px] ml-[-30px]'
           src={bannerMobile}
         />
       </div>
 
-      <div className='text-white-100 absolute right-12 md:right-3  lg:right-24 xl:right-32 w-[200px] md:w-[422px]'>
+      <div className='text-white-100 absolute right-12 md:right-3 lg:right-24 xl:right-32 w-[200px] md:w-[422px]'>
         <h1 className='text-xs font-semibold flex-nowrap whitespace-nowrap lg:text-xl'>Sabores inigualáveis</h1>
         <p className='text-xxxs lg:xs'>Sinta o cuidado do preparo com ingredientes selecionados.</p>
       </div>

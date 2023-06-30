@@ -1,26 +1,32 @@
-import { ChangeEvent } from "react"
+import { InputHTMLAttributes } from "react";
+import { IconProps } from "phosphor-react";
 
-import { IconProps } from "phosphor-react"
-interface InputProps {
-  type: string
-  id?: string
-  label?: string
-  placeholder: string
-  margin?: string
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  px?: string
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
+  margin?: string;
+  px?: string;
   icon?: React.ComponentType<IconProps>;
 }
 
-export function Input({ id, type, label, placeholder, margin, onChange, px, icon: Icon }: InputProps) {
-
+export function Input({
+  id,
+  type,
+  label,
+  placeholder,
+  margin,
+  onChange,
+  px,
+  icon: Icon,
+  step,
+  value
+}: InputProps) {
   return (
-    <div className={`gap-2 autofill:bg-yellow-200 rounded-lg font-Roboto h-12 ${margin}`}>
+    <div className={`gap-2 w-full font-Roboto ${margin}`}>
+      <label className="block text-white-400 mb-1" htmlFor={id}>
+        {label}
+      </label>
 
-      <label className="block text-white-400" htmlFor={id}>{label}</label>
-
-      <div className={`flex bg-dark-900 items-center ${px}`}>
-
+      <div className={`flex bg-dark-900 rounded-lg items-center ${px}`}>
         {Icon && <Icon className="text-white-100" size={24} />}
 
         <input
@@ -30,9 +36,10 @@ export function Input({ id, type, label, placeholder, margin, onChange, px, icon
           placeholder={placeholder}
           autoComplete="off"
           onChange={onChange}
+          step={step}
+          value={value}
         />
       </div>
     </div>
-
-  )
+  );
 }

@@ -8,9 +8,10 @@ interface SectionItemsProps {
   children: ReactNode;
 }
 
-export function CarouselItems({ title, children }: SectionItemsProps) {
+export function CarouselItems(props: SectionItemsProps) {
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   const carousel: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+
   const scrollAmount = 150;
 
   const handleScrollForward = () => {
@@ -26,37 +27,41 @@ export function CarouselItems({ title, children }: SectionItemsProps) {
   };
 
   return (
-    <section>
+    <div>
       <p className="text-white-300 font-Poppins font-medium text-xs mb-6">
-        {title}
+        {props.title}
       </p>
 
       <div className="relative">
-        <button
-          className={`${
-            isDesktop ? "absolute" : "hidden"
-          } text-white-100 mt-[210px] ml-10`}
-          onClick={handleScrollBackward}
-        >
-          {<CaretLeft size={35} />}
-        </button>
+        <div>
+          <button
+            className={`${
+              isDesktop ? "absolute" : "hidden"
+            } text-white-100 mt-[160px] z-20`}
+            onClick={handleScrollBackward}
+          >
+            {<CaretLeft size={35} />}
+          </button>
 
-        <button
-          className={`${
-            isDesktop ? "absolute" : "hidden"
-          } text-white-100 mt-[210px] right-0 mr-10`}
-          onClick={handleScrollForward}
-        >
-          {<CaretRight size={35} />}
-        </button>
+          <button
+            className={`${
+              isDesktop ? "absolute" : "hidden"
+            } text-white-100 mt-[160px] right-0 z-20`}
+            onClick={handleScrollForward}
+          >
+            {<CaretRight size={35} />}
+          </button>
+        </div>
 
         <div
-          className="cursor-grab overflow-x-scroll scroll-smooth scrollbar scrollbar-track-transparent "
+          className="overflow-x-scroll scroll-smooth scrollbar scrollbar-track-transparent"
           ref={carousel}
         >
-          <div className="flex gap-4">{children}</div>
+          <div className="hidden lg:block pointer-events-none absolute left-0 w-[200px] min-h-[462px] z-10 bg-gradient-to-r from-dark-400 opacity-100"></div>
+          <div className="hidden lg:block pointer-events-none  absolute right-0 w-[250px] min-h-[462px] z-10 bg-gradient-to-l from-dark-400 opacity-100"></div>
+          <div className="flex gap-4">{props.children}</div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

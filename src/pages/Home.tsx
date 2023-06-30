@@ -40,7 +40,7 @@ export function Home() {
   return (
     <>
       <LoadingModal isLoading={isLoading} />
-      <div className="min-h-screen bg-dark-400 overflow-auto">
+      <div className="min-h-screen bg-dark-400 overflow-auto scrollbar-none">
         <header className="min-w-[385px] fixed z-30 left-0 right-0">
           <Header orders={orders} />
         </header>

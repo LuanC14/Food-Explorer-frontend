@@ -42,6 +42,8 @@ export function SignUp() {
       navigate("/");
     } catch (error: unknown) {
       console.error(error);
+      setIsloading(false)
+      alert("Não foi possível realizar o cadastro")
     }
   }
 

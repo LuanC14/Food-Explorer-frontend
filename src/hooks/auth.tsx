@@ -64,6 +64,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setData({ token, id: user.id.toString(), isAdmin: admin });
     } catch (error: unknown) {
       console.error(error);
+      alert("Email ou senha incorretos")
     }
   }
 

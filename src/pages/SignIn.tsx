@@ -17,23 +17,21 @@ export function SignIn() {
   async function handleSignIn(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     setIsLoading(true);
-    await signIn({ email, password }).then(() => {
-      setIsLoading(false);
-    });
+    await signIn({ email, password }).then(() => setIsLoading(false))
   }
 
   useEffect(() => {
-    if(!email || !password || password.length < 6) { 
+    if (!email || !password || password.length < 6) {
       setIsDisabled(true)
     } else {
       setIsDisabled(false)
     }
-  }, [email,password])
+  }, [email, password])
 
   return (
     <>
       <LoadingModal isLoading={isLoading} />
-      
+
       <div className="min-w-screen min-h-screen overflow-auto px-1 bg-dark-400 flex flex-col justify-center items-center font-Poppins">
         <div className="w-[316px] lg:w-[900px] xl:w-[1100px] h-[430px] lg:h-[540px] lg:flex lg:justify-between lg:items-center">
           <Logo />

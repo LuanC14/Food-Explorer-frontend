@@ -85,11 +85,12 @@ export function EditItem() {
       }
       const confirm = window.confirm;
 
-      if (confirm("Alteração realizada, voltar para tela principal")) {
-        navigate("/");
+      if (confirm("Alteração realizada com sucesso")) {
+        navigate(`/details/${id}`);
       }
     } catch (error: unknown) {
       console.error(error);
+      setIsloading(false)
     }
   }
 
